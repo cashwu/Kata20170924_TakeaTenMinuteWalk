@@ -20,33 +20,9 @@ namespace Kata20170924_TakeaTenMinuteWalk
         }
 
         [TestMethod]
-        public void input_n_s_should_return_true()
+        public void input_n_s_should_return_false()
         {
-            IsValidWalkShouldTrue(new[] { "n", "s" });
-        }
-
-        [TestMethod]
-        public void input_n_n_should_return_false()
-        {
-            IsValidWalkShouldFalse(new[] { "n", "n" });
-        }
-
-        [TestMethod]
-        public void input_s_n_should_return_true()
-        {
-            IsValidWalkShouldTrue(new[] { "s", "n" });
-        }
-
-        [TestMethod]
-        public void input_e_w_should_return_true()
-        {
-            IsValidWalkShouldTrue(new[] { "e", "w" });
-        }
-
-        [TestMethod]
-        public void input_w_e_should_return_true()
-        {
-            IsValidWalkShouldTrue(new[] { "w", "e" });
+            IsValidWalkShouldFalse(new[] { "n", "s" });
         }
 
         [TestMethod]
@@ -100,7 +76,7 @@ namespace Kata20170924_TakeaTenMinuteWalk
     {
         public bool IsValidWalk(string[] walk)
         {
-            if (walk.Length > 10)
+            if (walk.Length > 10 || walk.Length < 10)
             {
                 return false;
             }
