@@ -19,7 +19,13 @@ namespace Kata20170924_TakeaTenMinuteWalk
         [TestMethod]
         public void input_n_s_should_return_true()
         {
-            IsValidWalkShouldTrue(new[] { "n", "S" });
+            IsValidWalkShouldTrue(new[] { "n", "s" });
+        }
+
+        [TestMethod]
+        public void input_n_n_should_return_false()
+        {
+            IsValidWalkShouldFalse(new[] { "n", "n" });
         }
 
         private void IsValidWalkShouldTrue(string[] walk)
@@ -42,7 +48,12 @@ namespace Kata20170924_TakeaTenMinuteWalk
                 return false;
             }
 
-            return true;
+            if (walk[0] == "n" && walk[1] == "s")
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
