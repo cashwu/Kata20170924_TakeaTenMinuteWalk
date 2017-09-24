@@ -16,11 +16,20 @@ namespace Kata20170924_TakeaTenMinuteWalk
             IsValidWalkShouldFalse(new[] {"n"});
         }
 
-        private static void IsValidWalkShouldFalse(string[] walk)
+        [TestMethod]
+        public void input_n_s_should_return_true()
         {
-            var kata = new Kata();
-            var actual = kata.IsValidWalk(walk);
-            Assert.IsFalse(actual);
+            IsValidWalkShouldTrue(new[] { "n", "S" });
+        }
+
+        private void IsValidWalkShouldTrue(string[] walk)
+        {
+            Assert.IsTrue(new Kata().IsValidWalk(walk));
+        }
+
+        private void IsValidWalkShouldFalse(string[] walk)
+        {
+            Assert.IsFalse(new Kata().IsValidWalk(walk));
         }
     }
 
@@ -28,7 +37,12 @@ namespace Kata20170924_TakeaTenMinuteWalk
     {
         public bool IsValidWalk(string[] walk)
         {
-            return false;
+            if (walk.Length == 1)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
