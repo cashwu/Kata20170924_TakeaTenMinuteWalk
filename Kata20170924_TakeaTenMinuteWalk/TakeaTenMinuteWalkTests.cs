@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Kata20170924_TakeaTenMinuteWalk
@@ -61,15 +64,10 @@ namespace Kata20170924_TakeaTenMinuteWalk
     {
         public bool IsValidWalk(string[] walk)
         {
-            if (walk.Length == 1)
-            {
-                return false;
-            }
-
-            if (walk[0] == "n" && walk[1] == "s" ||
-                walk[0] == "s" && walk[1] == "n" ||
-                walk[0] == "e" && walk[1] == "w" ||
-                walk[0] == "w" && walk[1] == "e")
+            var dic = walk.GroupBy(a => a).ToDictionary(a => a.Key, a => a.Count());
+            
+            if (dic.ContainsKey("n") && dic.ContainsKey("s") && dic["n"] == dic["s"]
+                || dic.ContainsKey("e") && dic.ContainsKey("w") && dic["e"] == dic["w"])
             {
                 return true;
             }
