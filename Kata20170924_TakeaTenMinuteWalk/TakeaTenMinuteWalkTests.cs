@@ -79,6 +79,12 @@ namespace Kata20170924_TakeaTenMinuteWalk
             IsValidWalkShouldFalse(new[] { "n", "s", "n", "s", "n", "s", "n", "s", "n", "s", "n", "s" });
         }
 
+        [TestMethod]
+        public void input_n_n_n_s_n_s_n_s_n_s_should_return_false()
+        {
+            IsValidWalkShouldFalse(new[] { "n", "n", "n", "s", "n", "s", "n", "s", "n", "s" });
+        }
+
         private void IsValidWalkShouldTrue(string[] walk)
         {
             Assert.IsTrue(new Kata().IsValidWalk(walk));
