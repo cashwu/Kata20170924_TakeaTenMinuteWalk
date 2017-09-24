@@ -55,6 +55,12 @@ namespace Kata20170924_TakeaTenMinuteWalk
             IsValidWalkShouldFalse(new[] { "n", "s", "n" });
         }
 
+        [TestMethod]
+        public void input_n_s_e_should_return_false()
+        {
+            IsValidWalkShouldFalse(new[] { "n", "s", "e" });
+        }
+
         private void IsValidWalkShouldTrue(string[] walk)
         {
             Assert.IsTrue(new Kata().IsValidWalk(walk));
@@ -70,10 +76,17 @@ namespace Kata20170924_TakeaTenMinuteWalk
     {
         public bool IsValidWalk(string[] walk)
         {
-            var dic = walk.GroupBy(a => a).ToDictionary(a => a.Key, a => a.Count());
-            
-            if (dic.ContainsKey("n") && dic.ContainsKey("s") && dic["n"] == dic["s"]
-                || dic.ContainsKey("e") && dic.ContainsKey("w") && dic["e"] == dic["w"])
+            var dic = new Dictionary<string, int>
+            {
+                { "n", 0 },{ "s", 0 },{ "e", 0 },{ "w", 0 }
+            };
+
+            foreach (var w in walk)
+            {
+                dic[w] += 1;
+            }
+
+            if (dic["n"] == dic["s"] && dic["e"] == dic["w"])
             {
                 return true;
             }
