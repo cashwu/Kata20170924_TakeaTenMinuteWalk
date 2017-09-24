@@ -76,7 +76,7 @@ namespace Kata20170924_TakeaTenMinuteWalk
     {
         public bool IsValidWalk(string[] walk)
         {
-            if (walk.Length > 10 || walk.Length < 10)
+            if (walk.Length != 10)
             {
                 return false;
             }
